@@ -1,160 +1,120 @@
 # StupidoPrint 🖨️
 
-**The Simple Printing Solution for Everyone**
+A web-based printing interface for CUPS-enabled Linux systems. StupidoPrint provides a browser-based solution for local and network printing without requiring driver installation or complex configuration on client devices.
 
-StupidoPrint eliminates the frustration of printer settings and complicated software. Designed for people who just want to print documents without dealing with technical complexities, driver issues, or confusing interfaces.
+## Features
 
-## 🎯 Who This Is For
+- **Browser-based interface** - No software installation on client devices
+- **Drag-and-drop file upload** - Simple file handling for PDFs and images
+- **Print preview** - Visual preview before sending to printer
+- **Configurable print settings** - Paper size, quality, color mode, scaling, and rotation
+- **Network access** - Host on local network for access across devices
+- **CUPS integration** - Works with existing printer configurations
 
-- **Office Workers** who need a simple "drag and print" solution
-- **Seniors** who find modern printer software too complicated
-- **Students** who just want to print their assignments quickly
-- **Small Businesses** that need a reliable kiosk-style printing station
-- **Libraries & Print Shops** offering self-service printing
-- **Anyone** frustrated with traditional printer software
+## Supported File Types
 
-## 🚀 Deployment Options
+- PDF documents
+- Images: JPG, PNG, GIF, BMP, WebP
 
-### Option 1: Kiosk Setup (Next to Printer)
-Perfect for libraries, offices, or print shops where people need direct access to printing.
+## Deployment
+
+### Local Kiosk Setup
 
 ```bash
 make show
 ```
 
-Additional config (Autostart, ...) depends on your specific kiosk setup.
+Access the interface at `http://localhost:4173`
 
-The interface will be available at `http://localhost:4173` - bookmark this in your browser or set it as the homepage.
-
-### Option 2: Network Hosting (LAN Access)
-Host it on one computer and let everyone in your office/network access it from their devices.
+### Network Setup
 
 ```bash
 make run-network
 ```
 
-Everyone can then access it at `http://[your-computer-ip]:4173` from any device on the network. The command will show you the exact Network URL to share.
+The application will display the network URL for sharing across devices.
 
-## ✨ What Makes It Simple
+## Prerequisites
 
-- **No Driver Installation**: Uses your existing printer setup
-- **Drag & Drop**: Just drag files into the website
-- **Visual Preview**: See exactly what will print before printing
-- **Smart Defaults**: Works great out of the box, no configuration needed for user
-- **Universal Access**: Works on any device with a web browser
-- **No Account Required**: Just open and use
+- Linux system with CUPS printer support
+- Node.js 18 or higher
+- Connected and configured printer
 
-## 📄 Supported Files
+## Installation
 
-- **Documents**: PDF files
-- **Images**: JPG, PNG, GIF, BMP, WebP
-- **Multiple Files**: Print several documents at once
-
-## 🖱️ How to use if it is hosted in your LAN
-
-1. **Open the application** in your web browser
-2. **Drag your files** into the window (or click to browse)
-3. **Preview** how they'll look when printed
-4. **Adjust if needed** (size, rotation, copies, duplex)
-5. **Click Print** - done!
-
-No accounts to create, no software to install on user devices, no technical knowledge required.
-
-## ⚙️ Admin Setup (One-Time Only)
-
-### Prerequisites
-- Linux computer with CUPS printer system
-- Printer connected and working with the system
-- Node.js 18+ installed
-
-### Quick Installation
 ```bash
-# Download and setup
-git clone https://github.com/[your-username]/StupidoPrint.git
-cd StupidoPrint
+git clone https://github.com/schurawel/StupidioPrint.git
+cd StupidioPrint
 
-# Auto-configure printer (detects available printers)
 chmod +x config_printer.sh
 ./config_printer.sh
 
-# Install and start
 make install
 make run-network
 ```
 
-The command will display both local and network URLs. Share the Network URL with users.
+## Configuration
 
-## 🔧 Configuration Options
+### Printer Configuration
 
-### Print Settings Users Can Control
-- **Paper Size**: A4, A3, Letter, Legal
-- **Quality**: Draft (fast), Normal, High (best quality)
-- **Color Mode**: Color, Grayscale, Black & White
-- **Duplex Printing**: 
-  - Single-sided
-  - Double-sided (horizontal flip)
-  - Double-sided (vertical flip)
-- **Copies**: 1-10 copies
-- **Layout**: Multiple pages per sheet (1, 2, 4, 6, 8, 9, 12, 16)
+Run the configuration script to detect and configure available printers:
 
-=> Change the Code if you want to allow users different settings
-
-### Advanced Adjustments
-- **Scaling**: 10% - 200% size adjustment
-- **Rotation**: 0°, 90°, 180°, 270°
-- **Page Selection**: Print all pages or specific ranges
-- **Multi-page Layout**: Fit multiple document pages on one printed sheet
-
-
-## 🆘 Troubleshooting
-
-### "Printer Not Found"
 ```bash
-# Re-run the configuration script
 ./config_printer.sh
 ```
 
-### "Cannot Access from Other Computers"
-- Make sure firewall allows ports 3001 and 4173
-- Check if your Computer ports are not blocked by firewall...
-- Check that other computers are on the same network
+### Print Options
 
-### "Files Won't Upload"
-- Check file size (default limit: 50MB per file)
-- Verify file type is supported
-- Try refreshing the browser
+Users can configure:
 
-### "Print Jobs Not Working"
-- Verify printer is turned on and has paper/ink
-- Check CUPS printer status: `lpstat -p`
-- Re-run printer configuration: `./config_printer.sh`
+- **Paper Size**: A4, A3, Letter, Legal
+- **Print Quality**: Draft, Normal, High
+- **Color Mode**: Color, Grayscale, Black & White
+- **Duplex**: Single-sided, double-sided horizontal, double-sided vertical
+- **Copies**: 1-10
+- **Page Layout**: 1, 2, 4, 6, 8, 9, 12, or 16 pages per sheet
+- **Scaling**: 10%-200%
+- **Rotation**: 0°, 90°, 180°, 270°
+- **Page Range**: All pages or specific ranges
 
----
+Modify the source code to adjust available user options.
 
-## 💡 Why "StupidoPrint"?
+## Troubleshooting
 
-The name reflects our philosophy: printing should be so simple that you don't need to be technically smart to use it. We handle all the complicated stuff so users can focus on what matters - getting their documents printed quickly and easily.
+### Printer Not Found
 
----
+```bash
+./config_printer.sh
+```
 
-## 🤝 Contributing
+### Cannot Access from Network
 
-We welcome contributions! Whether you're fixing bugs, adding features, or improving documentation:
+- Verify firewall allows ports 3001 and 4173
+- Confirm devices are on the same network
+- Check host computer firewall settings
+
+### File Upload Issues
+
+- Verify file size is within limits (default: 50MB)
+- Confirm file type is supported
+- Clear browser cache and retry
+
+### Print Job Failures
+
+- Verify printer is powered on and has supplies
+- Check CUPS status: `lpstat -p`
+- Re-run printer configuration
+
+## Development
+
+### Contributing
 
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
+2. Create a feature branch (`git checkout -b feature/name`)
+3. Commit changes (`git commit -m 'Description'`)
+4. Push to branch (`git push origin feature/name`)
 5. Open a Pull Request
 
-## 📝 License
+## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- Built for everyone who's ever struggled with printer software
-- Inspired by the need for accessible technology
-- Special thanks to libraries, schools, and offices that need simple solutions
-
-**Perfect for**: Offices, Libraries, Schools, Print Shops, Senior Centers, or anywhere people need hassle-free printing.
+MIT License - see [LICENSE](LICENSE) file for details
