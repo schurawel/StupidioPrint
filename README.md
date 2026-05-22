@@ -54,17 +54,3 @@ Modify the source code to adjust which options are available to users.
 **File Upload Problems**: Check that files are within size limits (default: 50MB), confirm the file format is supported, and clear browser cache if issues persist.
 
 **Print Job Failures**: Ensure the printer is powered on with adequate supplies, check CUPS status with `lpstat -p`, and re-run the configuration script if needed.
-
-## Development
-
-### Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/name`)
-3. Commit changes (`git commit -m 'Description'`)
-4. Push to branch (`git push origin feature/name`)
-5. Open a Pull Request
-
-## License
-
-MIT License - see [LICENSE](LICENSE) file for details
