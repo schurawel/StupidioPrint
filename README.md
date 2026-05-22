@@ -2,19 +2,13 @@
 
 A web-based printing interface for CUPS-enabled Linux systems. StupidoPrint provides a browser-based solution for local and network printing without requiring driver installation or complex configuration on client devices.
 
-## Overview
-
 StupidoPrint eliminates the need for software installation, printer configuration and the endless search why the printer won't print on client machines by offering a centralized printing solution accessible through any web browser. The application integrates with CUPS (Common Unix Printing System) to manage print jobs with configurable options for paper size, quality, color mode, scaling, and rotation.
-
-## Supported File Types
-
-The application accepts PDF documents and common image formats including JPG, PNG, GIF, BMP, and WebP.
 
 ## Getting Started
 
 ### Prerequisites
 
-- Linux system with CUPS printer support
+- Linux system with CUPS printer support (default on basically every modern distribution) to be used as the "Server"
 - Node.js 18 or higher
 - Connected and configured printer
 
@@ -46,6 +40,8 @@ The application provides users with standard print settings: paper size (A4, A3,
 Modify the source code to adjust which options are available to users.
 
 ## Troubleshooting
+
+**Supported File Types**: The application accepts PDF documents and common image formats including JPG, PNG, GIF, BMP, and WebP.
 
 **Printer Not Found**: Re-run the configuration script with `./config_printer.sh` to detect available printers.
 
