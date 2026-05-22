@@ -4,7 +4,7 @@ A web-based printing interface for CUPS-enabled Linux systems. StupidoPrint prov
 
 ## Overview
 
-StupidoPrint eliminates the need for software installation on client machines by offering a centralized printing solution accessible through any web browser. The application integrates with CUPS (Common Unix Printing System) to manage print jobs with configurable options for paper size, quality, color mode, scaling, and rotation.
+StupidoPrint eliminates the need for software installation, printer configuration and the endless search why the printer won't print on client machines by offering a centralized printing solution accessible through any web browser. The application integrates with CUPS (Common Unix Printing System) to manage print jobs with configurable options for paper size, quality, color mode, scaling, and rotation.
 
 ## Supported File Types
 
